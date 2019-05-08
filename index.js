@@ -17,13 +17,14 @@ function displayResults(responseJson) {
   console.log(responseJson);
   $('#results-list').empty();
   // iterate through the items array
-  for (let i = 0; i < responseJson.data[i].length; i++) {  
+  for (let i = 1; i < responseJson.data.length; i++) {  
     
 
     $('#results-list').append(
-      `<li><h3>${responseJson.data[i].addresses}</h3></li>`
-    )
-  };
+      `<li><h3>${responseJson.data[i].fullName}</h3>
+      <p>${responseJson.data[i].description}</p>
+      <p>${responseJson.data[i].url}</p></li>`
+    )};
   //display the results section  
   $('#results').removeClass('hidden');
 };
@@ -31,7 +32,7 @@ function displayResults(responseJson) {
 function getNationalParkResults(query, maxResults) {
   const params = {
     stateCode: query, //will be state code, ex: WY, TX
-    maxResults, //might need to be limit - check documentation 
+    limit: maxResults, //might need to be limit - check documentation 
     api_key: apiKey,
   };
 
@@ -71,3 +72,22 @@ $(watchForm); //calling function
 
 {/* <p>${responseJson.description}</p>
   <img src='${responseJson.items[i].snippet.thumbnails.default.url}'>  */}
+
+// return states.split(',').every(state => state.length === 2)
+
+// states needs to be in correct format 
+
+
+// const state = {
+//   parks: [],
+// }
+
+
+// function generateParkHtml(park) {
+//   return `<li> <p>${park.fullName}</p>
+//   <p>
+// }
+
+
+
+
